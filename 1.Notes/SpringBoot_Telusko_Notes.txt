@@ -1,0 +1,19 @@
+1.Spring Dependency Injection and Autowiring
+---------------------------------------------
+a)Create a class Alien.
+b)We want to create an object of this class in main class.
+	instead of Alien a = new Alien(); // We will use DI
+c)run method returns an object of ConfigurableApplicationContext.So we will hold it:
+	-ConfigurableApplicationContext context = SpringApplication.run(FirstProjApplication.class, args);
+	-Alien a = context.getBean(object of which class you want): Alien a = context.getBean(Alien.class); //Spring framework will provide this object.
+
+
+In JVM, we have a Spring container, that contains objects which are called Spring Beans.
+	this line creates the Spring container/ this is when it initialises your container: ConfigurableApplicationContext context = SpringApplication.run(FirstProjApplication.class, args);
+	By writing @Component (and import) in the class we specify to the Spring that we want objects of only these classes in spring container i.e as Spring beans.
+	It will be present in the Spring container and then you can use it: Alien a = context.getBean(Alien.class);
+
+i.e Spring framework is injecting this object into your application.
+
+
+

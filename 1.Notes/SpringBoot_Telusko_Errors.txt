@@ -1,0 +1,8 @@
+1.Exception in thread "main" org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.example.demo.Alien' available
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBean(DefaultListableBeanFactory.java:351)
+Reason:In JVM, we have a Spring container, that contains objects which are called Spring Beans.
+	this line creates the Spring container/ this is when it initialises your container: ConfigurableApplicationContext context = SpringApplication.run(FirstProjApplication.class, args);
+
+Solution: 	By writing @Component (and import) in the class we specify to the Spring that we want objects of only these classes in spring container i.e as Spring beans.
+	It will be present in the Spring container and then you can use it: Alien a = context.getBean(Alien.class);
+	(This is DI)
