@@ -6,3 +6,23 @@ Reason:In JVM, we have a Spring container, that contains objects which are calle
 Solution: 	By writing @Component (and import) in the class we specify to the Spring that we want objects of only these classes in spring container i.e as Spring beans.
 	It will be present in the Spring container and then you can use it: Alien a = context.getBean(Alien.class);
 	(This is DI)
+
+2.Autowiring:
+Exception in thread "main" Inside show
+java.lang.NullPointerException: Cannot invoke "com.example.demo.Laptop.compile()" because "this.laptop" is null
+	at com.example.demo.Alien.show(Alien.java:40)
+Reason: private Laptop laptop;
+	public void show() {
+		System.out.println("Inside show");
+		laptop.compile();
+	}
+
+	//The laptop is not instantiated.
+
+3.Field laptop in com.example.demo.Alien required a bean of type 'com.example.demo.Laptop' that could not be found.
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+Action:
+Consider defining a bean of type 'com.example.demo.Laptop' in your configuration.
+
+Reason and solution: In class Laptop add @Component

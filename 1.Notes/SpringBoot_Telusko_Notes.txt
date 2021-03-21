@@ -15,5 +15,35 @@ In JVM, we have a Spring container, that contains objects which are called Sprin
 
 i.e Spring framework is injecting this object into your application.
 
+2.Scopes when we create a Spring Bean
+--------------------------------------
+-Two Scope when we create Spring Bean: a)Singleton scope and b) Prototype scope
+-a)Singleton scope(@Component): By default Spring framework uses singleton design pattern i.e it will give you the object prehand(for those classes where you have specified @Component) i.e you don't have to wait for the object creation.The moment you start the application it will give you the object.Singleton will give you only one instance.
+	Ex:		
+	public Alien() {
+		super();
+		System.out.println("Object created..");
+	} 	
+
+		Alien a = context.getBean(Alien.class);
+		a.show();
+		Alien a1 = context.getBean(Alien.class);
+		a1.show();
+	//So even if we call this code twice. "Object created.." will run only once.
+
+-b)Prototype scope(@Scope(value="prototype")):Create instance on demand.it will create object for you when you say getBean.
+		Alien a = context.getBean(Alien.class);
+		a.show();
+		Alien a1 = context.getBean(Alien.class);
+		a1.show();
+	//So you will be getting 2 "Object created.." because we are getting 2 objects now.And if we don't write this code we will get 0 "Object created.."
+
+3.Autowiring: (In Singleton)
+-------------
+-There are two classes Alien and Laptop. We want to call Laptop method from inside of Alien(i.e Alien is dependent on Laptop).(written @Component in both,so spring will create obejct of both). But the 2 Beans are not connected.We have to tell Alien that look for Laptop object. i.e there should be an Autowiring between them:
+		@Autowired
+		private Laptop laptop;
+
+
 
 

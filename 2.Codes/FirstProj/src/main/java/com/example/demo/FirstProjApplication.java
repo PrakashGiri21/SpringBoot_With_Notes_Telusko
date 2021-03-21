@@ -11,7 +11,7 @@ public class FirstProjApplication {
 		ConfigurableApplicationContext context = SpringApplication.run(FirstProjApplication.class, args);
 		Alien a = context.getBean(Alien.class);
 		a.show();
-		
+		 
 	}
 
 }
